@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:scrollbars="none"
+    android:background="@color/green"
+    android:layout_height="match_parent"
+    tools:context=".Controlling">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btnClearInput"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/dark_green"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Clear" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/chkScroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:checked="true"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Scroll"
+                    android:textColor="@color/white" />
+
+                <Space
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+
+                <CheckBox
+                    android:id="@+id/chkReceiveText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Read"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ScrollView
+                    android:id="@+id/viewScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <TextView
+                        android:id="@+id/txtReceive"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+
+                        android:background="#eeeeee"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="Message shows up here ..."
+                        android:scrollbars="vertical"
+                        android:typeface="monospace" />
+                </ScrollView>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status: "
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold"/>
+                <Space
+                    android:layout_width="4dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/botstatus"
+                    android:text="Idle"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/dark_green"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/lottie"
+            app:lottie_fileName="overall.json"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lottie">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/poppins_medium"
+                    android:onClick="left_move"
+                    android:text="Left"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/poppins_medium"
+                    android:onClick="forward_move"
+                    android:text="Forward"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <Button
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/poppins_medium"
+                    android:onClick="stop_move"
+                    android:text="Stop"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/poppins_medium"
+                    android:onClick="back_move"
+                    android:text="Back"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/dark_green"
+                    android:fontFamily="@font/poppins_medium"
+                    android:onClick="right_move"
+                    android:text="Right"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="drill_bot"
+                android:backgroundTint="@color/teal_200"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold"
+                android:text="Drill"
+                android:textAllCaps="false"/>
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="seed_bot"
+                android:backgroundTint="@color/dark_green"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold"
+                android:text="Seed"
+                android:textAllCaps="false"/>
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="pattern_move"
+                android:backgroundTint="@color/teal_200"
+                android:fontFamily="@font/poppins_medium"
+                android:textStyle="bold"
+                android:text="Pattern"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
